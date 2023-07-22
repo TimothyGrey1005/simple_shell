@@ -1,7 +1,7 @@
  #include "shell.h"
 
 /**
- * input_buf – linked buffer commands
+ * input_buf - linked buffer commands
  * @info: struct parameter
  * @buf: buffer address
  * @len: length variable address
