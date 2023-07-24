@@ -25,12 +25,9 @@ char *get_history_file(info_t *info)
 }
 
 /**
- * write_history - it creates a new file,
- * or includes it to a file that already exists.
+ * write_history - it creates a new file
  * @info: the struct parameter
- *
- * Return: Returns a value of 1 upon successful execution,
- * returns a -1 if else
+ * Return: Returns a value of 1 if successful
 */
 int write_history(info_t *info)
 {
@@ -47,7 +44,7 @@ int write_history(info_t *info)
 		return (-1);
 	for (node = info->history; node; node = node->next)
 	{
-		_putsfd(node->str, fd);
+		_putsfd(node->string, fd);
 		_putfd('\n', fd);
 	}
 	_putfd(BUF_FLUSH, fd);
@@ -128,11 +125,8 @@ int build_history_list(info_t *info, char *buf, int linecount)
 }
 
 /**
- * renumber_history - the history of the linked list,
- * is renumbered after changes.
- * @info: A structure which contains the potential arguments.
-*It is used to manage a constant prototype function.
- *
+ * renumber_history - the history of the list
+ * @info: A structure which
  * Return: histcount new
  */
 int renumber_history(info_t *info)
@@ -142,7 +136,7 @@ int renumber_history(info_t *info)
 
 	while (node)
 	{
-		node->num = i++;
+		node->number = i++;
 		node = node->next;
 	}
 	return (info->histcount = i);

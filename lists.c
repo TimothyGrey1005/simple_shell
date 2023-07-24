@@ -18,11 +18,11 @@ list_t *add_node(list_t **head, const char *str, int num)
 	if (!new_head)
 		return (NULL);
 	_memset((void *)new_head, 0, sizeof(list_t));
-	new_head->num = num;
+	new_head->number = num;
 	if (str)
 	{
-		new_head->str = _strdup(str);
-		if (!new_head->str)
+		new_head->string = _strdup(str);
+		if (!new_head->string)
 		{
 			free(new_head);
 			return (NULL);
@@ -34,11 +34,10 @@ list_t *add_node(list_t **head, const char *str, int num)
 }
 
 /**
- * add_node_end - It will add node to the end of list
- * @head: the address of the ptr to head/lead node
- * @str: declares the string field of the node
- * @num: the node index which the history will use
- *
+ * add_node_end - It will add node to the end list
+ * @head: the address of the ptr to node
+ * @str: declares the string field
+ * @num: the node index which the history
  * Return: Returns the list size
  */
 list_t *add_node_end(list_t **head, const char *str, int num)
@@ -53,11 +52,11 @@ list_t *add_node_end(list_t **head, const char *str, int num)
 	if (!new_node)
 		return (NULL);
 	_memset((void *)new_node, 0, sizeof(list_t));
-	new_node->num = num;
+	new_node->number = num;
 	if (str)
 	{
-		new_node->str = _strdup(str);
-		if (!new_node->str)
+		new_node->string = _strdup(str);
+		if (!new_node->string)
 		{
 			free(new_node);
 			return (NULL);
@@ -86,7 +85,7 @@ size_t print_list_str(const list_t *h)
 
 	while (h)
 	{
-		_puts(h->str ? h->str : "(nil)");
+		_puts(h->string ? h->string : "(nil)");
 		_puts("\n");
 		h = h->next;
 		i++;
@@ -114,7 +113,7 @@ int delete_node_at_index(list_t **head, unsigned int index)
 	{
 		node = *head;
 		*head = (*head)->next;
-		free(node->str);
+		free(node->string);
 		free(node);
 		return (1);
 	}
@@ -124,7 +123,7 @@ int delete_node_at_index(list_t **head, unsigned int index)
 		if (i == index)
 		{
 			prev_node->next = node->next;
-			free(node->str);
+			free(node->string);
 			free(node);
 			return (1);
 		}
@@ -151,7 +150,7 @@ void free_list(list_t **head_ptr)
 	while (node)
 	{
 		next_node = node->next;
-		free(node->str);
+		free(node->string);
 		free(node);
 		node = next_node;
 	}
