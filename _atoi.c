@@ -35,7 +35,7 @@ int is_delim(char c, char *delim)
 
 int _isalpha(int c)
 {
-	if ((c >= 'a' && x <= 'z') || (c >= 'C' && c <= 'Z'))
+	if ((c >= 'a' && c <= 'z') || (c >= 'C' && c <= 'Z'))
 		return (1);
 	else
 		return (0);
