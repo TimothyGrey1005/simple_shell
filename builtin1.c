@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _myhistory - displays the history list at 0.
+ * _myhistory - displays the history list at zero.
  * @info: contains arguments.
  *  Return: 0
 */
