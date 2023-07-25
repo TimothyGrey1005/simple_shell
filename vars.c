@@ -93,7 +93,7 @@ int replace_alias(info_t *info)
 			return (0);
 		}
 		free(info->argv[0]);
-		c = strchr(node->string, '=');
+		c = strchr(node->str, '=');
 
 		if (!c)
 		{
@@ -149,7 +149,7 @@ int replace_vars(info_t *info)
 		if (node)
 		{
 			replace_string(&(info->argv[s]),
-					_strdup(_strchr(node->string, '=') + 1));
+					_strdup(_strchr(node->str, '=') + 1));
 			continue;
 		}
 
