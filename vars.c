@@ -84,7 +84,7 @@ int replace_alias(info_t *info)
 		if (!node)
 			return (0);
 		free(info->argv[0]);
-		p = _strchr(node->string, '=');
+		p = _strchr(node->str, '=');
 		if (!p)
 			return (0);
 		p = _strdup(p + 1);
@@ -93,6 +93,19 @@ int replace_alias(info_t *info)
 		info->argv[0] = p;
 	}
 	return (1);
+}
+
+/**
+ * replace_string - a function to replace str
+ * @old: old string
+ * @new: new str
+ * Return: string
+ */
+int replace_string(char **old, char *new)
+{
+        free(*old);
+        *old = new;
+        return (1);
 }
 
 /**
@@ -126,7 +139,7 @@ int replace_vars(info_t *info)
 		if (node)
 		{
 			replace_string(&(info->argv[i]),
-					_strdup(_strchr(node->string, '=') + 1));
+					_strdup(_strchr(node->str, '=') + 1));
 			continue;
 		}
 		replace_string(&info->argv[i], _strdup(""));
@@ -134,17 +147,3 @@ int replace_vars(info_t *info)
 	}
 	return (0);
 }
-
-/**
- * replace_string - a function to replace str
- * @old: old string
- * @new: new str
- * Return: string
- */
-int replace_string(char **old, char *new)
-{
-	free(*old);
-	*old = new;
-	return (1);
-}
-
