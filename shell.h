@@ -42,8 +42,8 @@
  */
 typedef struct liststr
 {
-	int number;
-	char *string;
+	int num;
+	char *str;
 	struct liststr *next;
 } list_t;
 
