@@ -48,10 +48,9 @@ int hsh(info_t *info, char **av)
  * @info: param
  * Return: result
  */
-
 int find_builtin(info_t *info)
 {
-	int f, built_in_r = -1;
+	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
 		{"exit", _myexit},
 		{"env", _myenv},
@@ -64,14 +63,14 @@ int find_builtin(info_t *info)
 		{NULL, NULL}
 	};
 
-	for (f = 0; builtintbl[f].type; f++)
-		if (_strcmp(info->argv[0], builtintbl[f].type) == 0)
+	for (i = 0; builtintbl[i].type; i++)
+		if (_strcmp(info->argv[0], builtintbl[i].type) == 0)
 		{
 			info->line_count++;
-			built_in_r = builtintbl[f].func(info);
+			built_in_ret = builtintbl[i].func(info);
 			break;
 		}
-	return (built_in_r);
+	return (built_in_ret);
 }
 
 /**
@@ -129,6 +128,7 @@ void fork_cmd(info_t *info)
 	child_pid = fork();
 	if (child_pid == -1)
 	{
+		/* TODO: PUT ERROR FUNCTION */
 		perror("Error:");
 		return;
 	}
@@ -141,6 +141,7 @@ void fork_cmd(info_t *info)
 				exit(126);
 			exit(1);
 		}
+		/* TODO: PUT ERROR FUNCTION */
 	}
 	else
 	{
