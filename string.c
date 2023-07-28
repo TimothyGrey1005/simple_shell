@@ -8,82 +8,67 @@
 
 int _strlen(char *s)
 {
-	int f = 0;
+	int i = 0;
 
 	if (!s)
-	{
 		return (0);
-	}
 
 	while (*s++)
-	{
-		f++;
-	}
-
-	return (f);
+		i++;
+	return (i);
 }
 
 /**
  * _strcmp - a func to compare two strs.
- * @str1: 1st str
- * @str2: 2nd str
+ * @s1:  1st str
+ * @s2: 2nd str
  * Return: result
  */
 
-int _strcmp(char *str1, char *str2)
+int _strcmp(char *s1, char *s2)
 {
-	while (*str1 && *str2)
+	while (*s1 && *s2)
 	{
-		if (*str1 != *str2)
-		{
-			return (*str1 - *str2);
-		}
-		str1++;
-		str2++;
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
 	}
-	if (*str1 == *str2)
-	{
+	if (*s1 == *s2)
 		return (0);
-	}
 	else
-		return (*str1 < *str2 ? -1 : 1);
+		return (*s1 < *s2 ? -1 : 1);
 }
 
 /**
  * starts_with - a func to checks
- * @stack: search str
- * @ndle: sub str
+ * @haystack: search str
+ * @needle: sub str
  * Return: result
  */
 
-char *starts_with(const char *stack, const char *ndle)
+char *starts_with(const char *haystack, const char *needle)
 {
-	while (*ndle)
-		if (*ndle++ != *stack++)
-		{
+	while (*needle)
+		if (*needle++ != *haystack++)
 			return (NULL);
-		}
-	return ((char *)stack);
+	return ((char *)haystack);
 }
 
 /**
  * _strcat - a func to mixes two strs
- * @destination: dest buff
- * @source: src buff
+ * @dest: dest buff
+ * @src: src buff
  * Return: results
  */
-char *_strcat(char *destination, char *source)
+char *_strcat(char *dest, char *src)
 {
-	char *result = destination;
+	char *ret = dest;
 
-	while (*destination)
-	{
-		destination++;
-	}
-	while (*source)
-	{
-		*destination++ = *source++;
-	}
-	*destination = *source;
-	return (result);
+	while (*dest)
+		dest++;
+	while (*src)
+		*dest++ = *src++;
+	*dest = *src;
+	return (ret);
 }

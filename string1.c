@@ -2,8 +2,8 @@
 
 /**
  * _strcpy - a function that copies a str
- * @destination: destination address
- * @source: src
+ * @dest: destination address
+ * @src: src
  * Return: results
  */
 
@@ -65,7 +65,7 @@ void _puts(char *str)
 
 /**
  * _putchar -print the char to stdout
- * @ch: print char
+ * @c: print char
  * Return: results.
  */
 int _putchar(char c)
