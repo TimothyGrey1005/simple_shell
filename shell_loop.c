@@ -74,7 +74,7 @@ int find_builtin(info_t *info)
 }
 
 /**
- * find_cmd - a funct to find path of a command
+ * find_cmd - a funct to find path
  * @info: param
  * Return: none
  */
@@ -116,7 +116,7 @@ void find_cmd(info_t *info)
 }
 
 /**
- * fork_cmd - a function to fork an exe thread to run a command
+ * fork_cmd - a function to fork an exe thread
  * @info: the param
  * Return: none
  */
@@ -128,7 +128,6 @@ void fork_cmd(info_t *info)
 	child_pid = fork();
 	if (child_pid == -1)
 	{
-		/* TODO: PUT ERROR FUNCTION */
 		perror("Error:");
 		return;
 	}
@@ -141,7 +140,6 @@ void fork_cmd(info_t *info)
 				exit(126);
 			exit(1);
 		}
-		/* TODO: PUT ERROR FUNCTION */
 	}
 	else
 	{
