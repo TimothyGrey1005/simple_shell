@@ -7,24 +7,21 @@
  * Return: results
  */
 
-char *_strcpy(char *destination, char *source)
+char *_strcpy(char *dest, char *src)
 {
-	int c = 0;
+	int i = 0;
 
-	if (destination == source || source == 0)
+	if (dest == src || src == 0)
+		return (dest);
+	while (src[i])
 	{
-		return (destination);
+		dest[i] = src[i];
+		i++;
 	}
-	while (source[c])
-	{
-		destination[c] = source[c];
-		c++;
-	}
-
-	destination[c] = 0;
-	return (destination);
-
+	dest[i] = 0;
+	return (dest);
 }
+
 /**
  * _strdup - a function that duplicates a string
  * @str: string
@@ -33,29 +30,19 @@ char *_strcpy(char *destination, char *source)
 
 char *_strdup(const char *str)
 {
-	int len = 0;
-	char *retn;
+	int length = 0;
+	char *ret;
 
 	if (str == NULL)
-	{
 		return (NULL);
-	}
 	while (*str++)
-	{
-		len++;
-	}
-	retn = malloc(sizeof(char) * (len + 1));
-
-	if (!retn)
-	{
+		length++;
+	ret = malloc(sizeof(char) * (length + 1));
+	if (!ret)
 		return (NULL);
-	}
-
-	for (len++; len--;)
-	{
-		retn[len] = *--str;
-	}
-	return (retn);
+	for (length++; length--;)
+		ret[length] = *--str;
+	return (ret);
 }
 
 /**
@@ -65,17 +52,14 @@ char *_strdup(const char *str)
  */
 void _puts(char *str)
 {
-	int s = 0;
+	int i = 0;
 
 	if (!str)
-	{
 		return;
-	}
-
-	while (str[s] != '\0')
+	while (str[i] != '\0')
 	{
-		_putchar(str[s]);
-		s++;
+		_putchar(str[i]);
+		i++;
 	}
 }
 
@@ -84,20 +68,17 @@ void _puts(char *str)
  * @ch: print char
  * Return: results.
  */
-int _putchar(char ch)
+int _putchar(char c)
 {
-	static int s;
+	static int i;
 	static char buf[WRITE_BUF_SIZE];
 
-	if (ch == BUF_FLUSH || s >= WRITE_BUF_SIZE)
+	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
-		write(1, buf, s);
-		s = 0;
+		write(1, buf, i);
+		i = 0;
 	}
-
-	if (ch != BUF_FLUSH)
-	{
-		buf[s++] = ch;
-	}
+	if (c != BUF_FLUSH)
+		buf[i++] = c;
 	return (1);
 }
